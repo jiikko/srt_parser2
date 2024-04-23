@@ -30,5 +30,18 @@ RSpec.describe SrtParser2 do
         expect(subject.lines.size).to eq 3
       end
     end
+
+    context 'with confusing.srt' do
+      let(:srt_body) { File.read('spec/fixtures/confusing.srt') }
+
+      it 'return lines' do
+        expect(subject.lines[0]).to have_attributes(sequence: 1, text: [])
+        expect(subject.lines[1]).to have_attributes(sequence: 2, text: [])
+        expect(subject.lines[2]).to have_attributes(sequence: 3, text: ['ん'])
+        expect(subject.lines[3]).to have_attributes(sequence: 4, text: ['み'])
+        expect(subject.lines[4]).to have_attributes(sequence: 5, text: ['ぬ'])
+        expect(subject.lines.size).to eq 5
+      end
+    end
   end
 end
