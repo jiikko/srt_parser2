@@ -39,7 +39,7 @@ module SrtParser2
           else
             line.error = "#{index}, Invalid Time Line formatting, [#{str}]"
             warn line.error if @debug
-            line = Line.new # NOTE: Reset line to start over
+            line = Line.new # NOTE: sequenceと本文が同じだったらここに入る。この場合は両方無視する
           end
         elsif line.filled? && str == line.next_sequence.to_s
           result.lines << line
