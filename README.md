@@ -3,6 +3,30 @@
 https://github.com/cpetersen/srt/issues/29  
 空行を含む srt をパースするための gem です。
 
+```
+1
+00:00:03,500 --> 00:00:12,450
+
+[音楽]
+
+2
+00:00:12,450 --> 00:00:12,460
+
+
+
+3
+00:00:12,460 --> 00:00:13,860
+
+ん
+```
+
+```ruby
+result = SrtParser2.parse(srt_body)
+expect(result.lines[0]).to have_attributes(sequence: 1, text: ['[音楽]'])
+expect(result.lines[1]).to have_attributes(sequence: 2, text: [])
+expect(result.lines[2]).to have_attributes(sequence: 3, text: ['ん'])
+```
+
 ## Usage
 
 ```ruby
