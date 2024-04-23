@@ -14,9 +14,9 @@ RSpec.describe SrtParser2 do
       it 'return lines' do
         expect(subject.lines.size).to eq 2
         expect(subject.lines[0]).to have_attributes(sequence: 1, start_time: 235, end_time: 237,
-                                                    text: 'I had the craziest dream last night.')
+                                                    text: ['I had the craziest dream last night.'])
         expect(subject.lines[1]).to have_attributes(sequence: 2, start_time: 239, end_time: 241,
-                                                    text: 'I was dancing the White Swan.')
+                                                    text: ['I was dancing the White Swan.'])
       end
     end
 
@@ -26,9 +26,9 @@ RSpec.describe SrtParser2 do
       it 'return lines' do
         expect(subject.lines.size).to eq 3
 
-        expect(subject.lines[0]).to have_attributes(sequence: 1, text: '[音楽]')
-        expect(subject.lines[1]).to have_attributes(sequence: 2, text: '')
-        expect(subject.lines[2]).to have_attributes(sequence: 3, text: 'ん')
+        expect(subject.lines[0]).to have_attributes(sequence: 1, text: ['[音楽]'])
+        expect(subject.lines[1]).to have_attributes(sequence: 2, text: [])
+        expect(subject.lines[2]).to have_attributes(sequence: 3, text: ['ん'])
       end
     end
   end

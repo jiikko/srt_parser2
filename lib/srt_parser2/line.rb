@@ -4,10 +4,6 @@ module SrtParser2
 
     attr_writer :start_time, :end_time
 
-    def empty?
-      sequence.nil? && start_time.nil? && end_time.nil? && text == '' && error.nil?
-    end
-
     def filled?
       sequence.is_a?(Integer) && start_time.is_a?(Integer) && end_time.is_a?(Integer) && error.nil?
     end
@@ -26,7 +22,7 @@ module SrtParser2
     end
 
     def text
-      @text ||= ''
+      @text ||= []
     end
 
     private

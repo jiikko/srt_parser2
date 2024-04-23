@@ -47,7 +47,7 @@ module SrtParser2
         elsif str == STOP_WORD
           result.lines << line
         else
-          line.text << str.strip
+          line.text << str.strip if str.strip.length.positive?
         end
       end
     rescue StandardError
